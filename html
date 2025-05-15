@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Setting kompatibilitas browser -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Setting viewport supaya responsif di mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Real-Time</title>
+  <!-- Link ke jQuery, digunakan untuk manipulasi DOM -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap CSS untuk styling dan layout responsif -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <!-- Favicon untuk tab browser -->
+  <link
+    rel="icon"
+    href="favicon.ico"
+    type="image/x-icon"
+  />
+  <!-- FontAwesome untuk ikon -->
+  <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous"
+  />
+  <!-- CSS eksternal -->
+  <link rel="stylesheet" href="2.css" />
+  <!-- Google Font Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+  /* Atur font dan warna dasar */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1c1c1c; 
+  color: white; /* Warna teks default Bootstrap */
+}
+
+html {
+  scroll-behavior: smooth; /* Animasi scroll smooth */
+}
+
+.section-common {
+  background-color: #1c1c1c; /* Pastikan section umum putih */
+}
+
+.section-home {
+  background-color: #1c1c1c; /* Jika tidak mau pakai gambar latar */
+}
+
+/* Animasi gallery akan dibuat di CSS eksternal */
+  @keyframes scrollGallery {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  /* Styling link sosial media */
+  .social-icons a {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #0d6efd;
+  }
+  /* Styling tabel dengan border putih */
+    .table-bordered-white td,
+  .table-bordered-white th {
+    border: 1px solid white !important;
+  }
+
+  .table-bordered-white thead th {
+    border-bottom: 2px solid white !important;
+  }
+
+  .table-bordered-white {
+    border-color: white !important;
+  }
+
+</style>
+</head>
+<body>
+  <!-- Navbar fixed-top supaya selalu muncul di atas saat scroll -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <i class="fas fa-user-graduate me-2"></i>PROFILE MAHASISWA
+    </a>
+
+    <!-- Tombol Hamburger Android -->
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU DESKTOP -->
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-end" id="navbarText">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#Beranda"><i class="fas fa-home me-1"></i> Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Dashboard"><i class="fas fa-tachometer-alt me-1"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Profil"><i class="fas fa-user me-1"></i> Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Komentar"><i class="fas fa-comments me-1"></i> Komentar</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Kontak"><i class="fas fa-envelope me-1"></i> Kontak</a></li>
+      </ul>
+    </div>
+
+    <!-- MENU MOBILE (Offcanvas) -->
+    <div class="offcanvas offcanvas-end bg-dark text-white d-lg-none" tabindex="-1" id="mobileMenu">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-white" href="#Beranda"><i class="fas fa-home me-2"></i>Beranda</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#Dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#Profil"><i class="fas fa-user me-2"></i>Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Komentar"><i class="fas fa-comments me-1"></i> Komentar</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#Kontak"><i class="fas fa-envelope me-2"></i>Kontak Saya</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Background navbar abu-abu */
+  .bg-secondary {
+    background-color: #212529!important;
+  }
+
+  /* Hover effect smooth dan warna */
+  .nav-link {
+    transition: color 0.3s ease;
+    color: white;
+    padding-right: 1rem; /* beri jarak kanan supaya garis tidak terlalu dekat */
+    border-right: 1px solid rgba(255, 255, 255, 0.5); /* garis pemisah */
+  }
+
+  /* Hilangkan border kanan pada item terakhir */
+  .navbar-nav .nav-item:last-child .nav-link {
+    border-right: none;
+  }
+
+  /* Hover warna kuning keemasan */
+  .nav-link:hover {
+    color: #ffc107;
+  }
+</style>
+
+  <!-- Section Beranda dengan background gambar -->
+  <div
+    class="section-home"
+    id="Beranda"
+    style="
+      background: url('gambar10.png') center center / cover no-repeat;
+      min-height: 100vh;
+    "
+  >
+    <div class="container">
+      <div class="row align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+          <div class="home-content">
+            <h1>Selamat Datang!</h1>
+            <p>
+              Selamat datang di portofolio saya. Di sini, Anda dapat menemukan
+              informasi tentang saya. Terima kasih telah meluangkan waktu untuk
+              melihat hasil karya saya, dan saya berharap Anda mendapatkan
+              gambaran yang jelas tentang kemampuan dan pengalaman saya
+            </p>
+            <a href="#Profil" class="btn btn-light btn-lg mt-4 transition-hover"
+              >Lihat Profil Saya</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Dashboard -->
+  <div class="section-common text-center" id="Dashboard">
+    <div class="container">
+      <h2 class="display-5 mb-5 dashboard-title">Dashboard Mahasiswa</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card dashboard-card p-4 h-100"> <!-- Tinggi penuh -->
+            <div class="card-body text-start d-flex flex-column">
+              <div class="text-center">
+                <i class="fas fa-user-graduate dashboard-icon mb-3"></i>
+              </div>
+              <h5 class="card-title">Data Profil</h5>
+              <p class="card-text">Nama: Rivaldo Oktavian Rahmadani</p>
+              <p class="card-text">Jurusan: Teknik Informatika</p>
+              <p class="card-text">Universitas: Universitas Nusantara PGRI Kediri</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card dashboard-card p-4 h-100">
+            <div class="card-body text-start">
+              <div class="text-center"> <!-- Rata kiri -->
+                <i class="fas fa-graduation-cap dashboard-icon mb-3"></i>
+              </div>
+              <h5 class="card-title">Pencapaian Akademik</h5>
+              <p class="card-text">
+                IPK: <strong>3.75</strong>
+              </p>
+              <p class="card-text">
+                SKS Tempuh: <strong>80 SKS</strong>
+              </p>
+              <p class="card-text">
+                Penghargaan: <strong>Juara 1 Lomba Koding</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card dashboard-card p-4 h-100">
+            <div class="card-body text-start">
+              <div class="text-center">
+                <i class="fas fa-bell dashboard-icon mb-3"></i>
+              </div>  
+              <h5 class="card-title">Notifikasi</h5>
+              <p class="card-text">📥 3 komentar baru</p>
+              <p class="card-text">📌 1 pembaruan profil</p>
+              <p class="card-text">🔔 2 pesan belum dibaca</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabel Ringkasan Proyek -->
+      <div class="mt-5 text-start">
+        <h4 class="mb-3">Ringkasan Proyek</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover table-bordered-white">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Nama Proyek</th>
+                <th>Status</th>
+                <th>Deadline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Website</td>
+                <td><span class="badge bg-success">Selesai</span></td>
+                <td>19 Mei 2025</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>UI/UX</td>
+                <td><span class="badge bg-warning text-dark">Dalam Proses</span></td>
+                <td>19 Mei 2025</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Desain UI Gallery</td>
+                <td><span class="badge bg-secondary">Belum Dimulai</span></td>
+                <td>31 Mei 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profil -->
+  <div class="section-common text-center" id="Profil">
+    <div class="container mt-5">
+      <h2 class="display-4 mb-4">Profil Mahasiswa</h2>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-4 mb-4">
+          <img
+            src="akualdo.jpg"
+            class="profile-img img-fluid shadow-sm rounded-circle"
+            alt="Foto Profil Rivaldo Oktavian Rahmadani"
+          />
+        </div>
+        <!-- Deskripsi profil -->
+        <div class="col-md-7 text-start">
+          <h3 class="fw-bold">Rivaldo Oktavian Rahmadani</h3>
+          <p class="text-muted mb-1">Mahasiswa Teknik Informatika</p>
+          <p class="text-muted mb-4">Universitas Nusantara PGRI Kediri</p>
+          <p>
+            Saya adalah mahasiswa aktif pada program studi Teknik Informatika.
+            Memiliki ketertarikan dalam pengembangan web, khususnya dalam
+            bidang front-end development dan desain antarmuka pengguna (UI/UX).
+            Saya percaya bahwa teknologi adalah kunci untuk meningkatkan efisiensi serta memberikan solusi praktis dalam kehidupan sehari-hari.
+          </p>
+          <p>
+            Untuk saat ini saya sedang mempelajari HTML, CSS, JavaScript, serta
+            penggunaan framework modern seperti Bootstrap. Saat ini saya sedang
+            fokus memperluas pengetahuan di bidang desain antarmuka dan
+            pengalaman pengguna yang optimal.
+          </p>
+          <!-- Icon sosial media -->
+          <div class="social-icons mt-3">
+            <a
+              href="https://instagram.com/aldooktvnn_"
+              class="me-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></a>
+            <a
+              href="https://wa.me/62815706884680"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-whatsapp fa-lg"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="section-common gallery-container">
+    <div class="gallery-wrapper">
+      <div class="gallery-item"><img src="gambar1.jpg" alt="Gambar 1" /></div>
+      <div class="gallery-item"><img src="gambard1.webp" alt="Gambar 2" /></div>
+      <div class="gallery-item"><img src="gambard2.jpg" alt="Gambar 3" /></div>
+      <div class="gallery-item"><img src="gambard3.png" alt="Gambar 4" /></div>
+      <div class="gallery-item"><img src="gambar1.jpg" alt="Gambar 5" /></div>
+      <div class="gallery-item"><img src="gambard1.webp" alt="Gambar 6" /></div>
+      <div class="gallery-item"><img src="gambard2.jpg" alt="Gambar 7" /></div>
+      <div class="gallery-item"><img src="gambard3.png" alt="Gambar 8" /></div>
+
+      <!-- Duplikasi gambar untuk membuat animasi loop -->
+      <div class="gallery-item"><img src="gambar1.jpg" alt="Gambar 1" /></div>
+      <div class="gallery-item"><img src="gambard1.webp" alt="Gambar 2" /></div>
+      <div class="gallery-item"><img src="gambard2.jpg" alt="Gambar 3" /></div>
+      <div class="gallery-item"><img src="gambard3.png" alt="Gambar 4" /></div>
+      <div class="gallery-item"><img src="gambar1.jpg" alt="Gambar 5" /></div>
+      <div class="gallery-item"><img src="gambard1.webp" alt="Gambar 6" /></div>
+      <div class="gallery-item"><img src="gambard2.jpg" alt="Gambar 7" /></div>
+      <div class="gallery-item"><img src="gambard3.png" alt="Gambar 8" /></div>
+    </div>
+  </div>
+
+  <section class="section-comment" id="Komentar">
+    <h2>Komentar</h2>
+    <form id="commentForm">
+      <div class="form-group">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+      </div>
+      <div class="form-group">
+        <label for="comment">Komentar:</label>
+        <textarea id="comment" name="comment" rows="4" placeholder="Tulis komentar Anda di sini..." required></textarea>
+      </div>
+      <button type="submit">Kirim Komentar</button>
+    </form>
+    <div id="commentMessage" role="alert" aria-live="polite"></div>
+  </section>
+
+
+  <!-- Kontak -->
+  <div class="section-common text-center" id="Kontak">
+    <h2 class="display-3">Kontak Saya</h2>
+    <div class="container mt-4">
+      <p>Anda dapat menghubungi saya melalui :</p>
+      <div class="contact-icons mt-4">
+        <a
+          href="https://wa.me/62815706884680"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-success m-2"
+        >
+          <i class="fab fa-whatsapp"></i> WhatsApp: 0857-0683-4680
+        </a>
+        <a
+          href="https://instagram.com/aldooktvnn_"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-danger m-2"
+        >
+          <i class="fab fa-instagram"></i> Instagram: @aldooktvnn_
+        </a>
+         <a
+        href="mailto:aldooktvnn@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary m-2"
+        >
+        <i class="fas fa-envelope me-1"></i> Email: rivaldooktavian434@gmail.com
+        </a>
+      </div>
+      <p class="mt-4">
+        Jangan ragu untuk terhubung dengan saya, baik untuk diskusi,
+        kolaborasi, atau sekadar menyapa!
+      </p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+<script>
+  $(document).ready(function(){
+    $('.navbar-nav a').on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+        var hash = this.hash;
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top - 70 // -70 agar tidak tertutup navbar fixed
+        }, 800, function(){
+          window.location.hash = hash;
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
+
+
