@@ -14,13 +14,6 @@
   padding-left: 30px; /* Agar konten tidak terlalu menempel di sisi kiri */
   padding-bottom: 100px; /* misal */
 }
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-  .section-home {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    overflow-x: hidden; /* Cegah horizontal scroll */
-  }
-}
 
 .home-content {
   background-color: rgba(0, 0, 0, 0.6); /* Background lebih gelap agar teks terlihat jelas */
