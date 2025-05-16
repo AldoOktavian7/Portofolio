@@ -5,22 +5,14 @@
 
 /* Beranda */
 .section-home {
-  height: 100vh;
-  width: 100vw; /* pastikan memenuhi seluruh lebar layar */
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 70px 20px;
-  position: relative;
-  text-align: center;
-
-  background-image: url('gambar10.png');
-  background-size: 100% 100%; /* agar gambar menutupi penuh */
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* Tambahan efek latar untuk baca teks */
-  backdrop-filter: brightness(0.7);
+  background: url('gambar10.png') center center / cover no-repeat;
+  min-height: 100vh;
+  color: white;
+  padding-left: 30px; /* Agar konten tidak terlalu menempel di sisi kiri */
+  padding-bottom: 100px; /* misal */
 }
 
 .home-content {
@@ -32,66 +24,34 @@
   animation: fadeInUp 2s ease-out forwards; /* Konten muncul dari bawah dalam 2 detik */
 }
 
-@media screen and (max-width: 1024px) and (orientation: landscape) {
-  .section-home {
-    background-image: url('gambar10.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 60px;
+.home-content h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  animation: slideDown 1.5s ease-out forwards; /* Animasi untuk judul */
+  animation-delay: 0.3s; /* Memberikan jeda agar judul muncul sedikit lebih lambat */
+}
 
-    padding: 40px 30px;
-    height: 100vh;
-    width: 100vw;
+.home-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0; /* Mulai dengan opacity 0 untuk animasi */
+  animation: fadeInUp 1.5s ease-out 1.8s forwards; /* Mengurangi durasi menjadi 1.5 detik untuk animasi yang lebih cepat */
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+.home-content a {
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  background-color: #0d6efd;
+  color: white;
+  transition: background-color 0.3s ease;
+}
 
-  .section-dashboard {
-    margin-top: 60px;
-  }
-
-  .home-content {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    color: white;
-  }
-
-  .home-content h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    animation: slideDown 1.5s ease-out forwards;
-    animation-delay: 0.3s;
-  }
-
-  .home-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeInUp 1.5s ease-out 1.8s forwards;
-  }
-
-  .home-content a {
-    font-size: 1.2rem;
-    padding: 12px 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    background-color: #0d6efd;
-    color: white;
-    transition: background-color 0.3s ease;
-  }
-
-  .home-content a:hover {
-    background-color: #004085;
-  }
+.home-content a:hover {
+  background-color: #004085;
 }
 
 /* Animasi untuk judul */
