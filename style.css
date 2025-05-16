@@ -13,6 +13,12 @@
   color: white;
   padding-left: 30px; /* Agar konten tidak terlalu menempel di sisi kiri */
   padding-bottom: 100px; /* misal */
+  background-color: #000; /* fallback jika gambar gagal load */
+  background-image: url('gambar10.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 80px;
 }
 
 .home-content {
@@ -24,13 +30,37 @@
   animation: fadeInUp 2s ease-out forwards; /* Konten muncul dari bawah dalam 2 detik */
 }
 
-/* Tambahan agar .home-content responsif di mode landscape kecil */
-@media only screen and (max-width: 768px) and (orientation: landscape) {
+/* Responsif tambahan untuk layar kecil & mode landscape */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .section-home {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    text-align: center;
+  }
+
   .home-content {
-    max-width: 100vw; /* Maksimal selebar viewport */
-    width: auto;      /* Lebar otomatis supaya menyesuaikan */
-    padding: 20px;    /* Padding agak kecil supaya muat */
-    box-sizing: border-box; /* Supaya padding dihitung di dalam lebar */
+    width: 100%;
+    padding: 20px;
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .home-content a {
+    font-size: 1rem;
+    padding: 10px 16px;
   }
 }
 
