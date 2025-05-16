@@ -16,12 +16,10 @@
 }
 
 .home-content {
-  background-color: rgba(0, 0, 0, 0.6); /* Background lebih gelap agar teks terlihat jelas */
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 600px;
-  opacity: 0; /* Mulai dengan opacity 0 untuk animasi */
-  animation: fadeInUp 2s ease-out forwards; /* Konten muncul dari bawah dalam 2 detik */
+ max-width: 100vw; /* Maksimal selebar viewport */
+    width: auto;      /* Lebar otomatis supaya menyesuaikan */
+    padding: 20px;    /* Padding agak kecil supaya muat */
+    box-sizing: border-box; /* Supaya padding dihitung di dalam lebar */
 }
 
 .home-content h1 {
