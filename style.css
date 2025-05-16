@@ -14,12 +14,18 @@
   padding-left: 30px; /* Agar konten tidak terlalu menempel di sisi kiri */
   padding-bottom: 100px; /* misal */
 }
-
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .section-home {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    overflow-x: hidden; /* Cegah horizontal scroll */
+  }
+}
 .home-content {
- max-width: 100vw; /* Maksimal selebar viewport */
-    width: auto;      /* Lebar otomatis supaya menyesuaikan */
-    padding: 20px;    /* Padding agak kecil supaya muat */
-    box-sizing: border-box; /* Supaya padding dihitung di dalam lebar */
+ max-width: calc(100vw - 40px); /* Lebar viewport dikurangi padding kiri & kanan */
+ padding: 20px;
+ box-sizing: border-box;
+ overflow-wrap: break-word; /* Pastikan teks bisa wrap */
 }
 
 .home-content h1 {
