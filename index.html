@@ -36,59 +36,6 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
     rel="stylesheet"
   />
-  <style>
-  /* Atur font dan warna dasar */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #1c1c1c; 
-  color: white; /* Warna teks default Bootstrap */
-}
-
-html {
-  scroll-behavior: smooth; /* Animasi scroll smooth */
-}
-
-.section-common {
-  background-color: #1c1c1c; /* Pastikan section umum putih */
-}
-
-.section-home {
-  background-color: #1c1c1c; /* Jika tidak mau pakai gambar latar */
-}
-
-/* Animasi gallery akan dibuat di CSS eksternal */
-  @keyframes scrollGallery {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  /* Styling link sosial media */
-  .social-icons a {
-    color: inherit;
-    transition: color 0.3s ease;
-  }
-
-  .social-icons a:hover {
-    color: #0d6efd;
-  }
-  /* Styling tabel dengan border putih */
-    .table-bordered-white td,
-  .table-bordered-white th {
-    border: 1px solid white !important;
-  }
-
-  .table-bordered-white thead th {
-    border-bottom: 2px solid white !important;
-  }
-
-  .table-bordered-white {
-    border-color: white !important;
-  }
-
-</style>
 </head>
 <body>
   <!-- Navbar fixed-top supaya selalu muncul di atas saat scroll -->
@@ -352,26 +299,28 @@ html {
     </div>
   </div>
 
-  <section class="section-comment" id="Komentar">
-    <h2>Komentar</h2>
+  <!-- Section Komentar -->
+  <section class="section-comment bg-dark text-white py-5" id="Komentar">
+  <div class="container">
+    <h2 class="mb-4">Komentar</h2>
     <form id="commentForm">
-      <div class="form-group">
-        <label for="name">Nama:</label>
-        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+      <div class="mb-3">
+        <label for="name" class="form-label">Nama:</label>
+        <input type="text" class="form-control" id="name" required />
       </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" required />
       </div>
-      <div class="form-group">
-        <label for="comment">Komentar:</label>
-        <textarea id="comment" name="comment" rows="4" placeholder="Tulis komentar Anda di sini..." required></textarea>
+      <div class="mb-3">
+        <label for="comment" class="form-label">Komentar:</label>
+        <textarea class="form-control" id="comment" rows="4" required></textarea>
       </div>
-      <button type="submit">Kirim Komentar</button>
+      <button type="submit" class="btn btn-primary">Kirim Komentar</button>
     </form>
-    <div id="commentMessage" role="alert" aria-live="polite"></div>
-  </section>
-
+    <div id="commentMessage" class="mt-3" role="alert" aria-live="polite"></div>
+  </div>
+</section>
 
   <!-- Kontak -->
   <div class="section-common text-center" id="Kontak">
@@ -433,7 +382,17 @@ html {
     });
   });
 </script>
+<script>
+  $("#commentForm").submit(function (e) {
+    e.preventDefault();
+    $("#commentMessage").text("Terima kasih atas komentarnya!").addClass("alert alert-success");
+    this.reset();
+  });
+</script>
+<footer class="bg-secondary text-white text-center py-3 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Rivaldo Oktavian Rahmadani. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>
-
-
