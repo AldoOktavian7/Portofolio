@@ -60,7 +60,7 @@
   margin-right: auto;
 }
 
-/* =================== home.css =================== */
+/* =================== gallery.css =================== */
 .gallery-container {
   overflow: hidden;
   width: 90%;
@@ -98,7 +98,7 @@
   }
 }
 
-/* =================== home.css =================== */
+/* =================== komentar.css =================== */
 .section-contact *,
 .section-comment * {
   background-color: transparent !important;
@@ -204,7 +204,7 @@
   }
 }
 
-/* =================== home.css =================== */
+/* =================== dashboard.css =================== */
 .section-dashboard {
   padding-top: 150px;
   background-color: #1c1c1c;
@@ -271,7 +271,7 @@
   color: white !important;
 }
 
-/* =================== home.css =================== */
+/* =================== utilities.css (warna, aanimasi, spacing, dll) =================== */
 @keyframes slideDown {
   from {
     opacity: 0;
