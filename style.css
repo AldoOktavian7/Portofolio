@@ -1,8 +1,3 @@
-/* Untuk mengatur jarak scroll agar tidak tertutup navbar */
-#Profil, #Dashboard, #Beranda, #Kontak, #Komentar{
-  scroll-margin-top: 70px; /* Tinggi navbar */
-}
-
 /* Beranda */
 .section-home {
   display: flex;
@@ -361,3 +356,53 @@
   margin-top: -56px; 
   padding-top: 100px;    
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1c1c1c; 
+  color: white; /* Warna teks default Bootstrap */
+}
+
+html {
+  scroll-behavior: smooth; /* Animasi scroll smooth */
+}
+
+.section-common {
+  background-color: #1c1c1c; /* Pastikan section umum putih */
+}
+
+.section-home {
+  background-color: #1c1c1c; /* Jika tidak mau pakai gambar latar */
+}
+
+/* Animasi gallery akan dibuat di CSS eksternal */
+  @keyframes scrollGallery {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  /* Styling link sosial media */
+  .social-icons a {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #0d6efd;
+  }
+  /* Styling tabel dengan border putih */
+    .table-bordered-white td,
+  .table-bordered-white th {
+    border: 1px solid white !important;
+  }
+
+  .table-bordered-white thead th {
+    border-bottom: 2px solid white !important;
+  }
+
+  .table-bordered-white {
+    border-color: white !important;
+  }
