@@ -1,4 +1,4 @@
-/* Beranda */
+/* =================== home.css =================== */
 .section-home {
   display: flex;
   justify-content: flex-start;
@@ -6,33 +6,34 @@
   background: url('gambar10.png') center center / cover no-repeat;
   min-height: 100vh;
   color: white;
-  padding-left: 30px; /* Agar konten tidak terlalu menempel di sisi kiri */
-  padding-bottom: 100px; /* misal */
+  padding-left: 30px;
+  padding-bottom: 100px;
+  background-color: #1c1c1c;
 }
 
 .home-content {
-  background-color: rgba(0, 0, 0, 0.6); /* Background lebih gelap agar teks terlihat jelas */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 40px;
   border-radius: 12px;
   max-width: 600px;
-  opacity: 0; /* Mulai dengan opacity 0 untuk animasi */
-  animation: fadeInUp 2s ease-out forwards; /* Konten muncul dari bawah dalam 2 detik */
+  opacity: 0;
+  animation: fadeInUp 2s ease-out forwards;
 }
 
 .home-content h1 {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 20px;
-  animation: slideDown 1.5s ease-out forwards; /* Animasi untuk judul */
-  animation-delay: 0.3s; /* Memberikan jeda agar judul muncul sedikit lebih lambat */
+  animation: slideDown 1.5s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
 .home-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 20px;
-  opacity: 0; /* Mulai dengan opacity 0 untuk animasi */
-  animation: fadeInUp 1.5s ease-out 1.8s forwards; /* Mengurangi durasi menjadi 1.5 detik untuk animasi yang lebih cepat */
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out 1.8s forwards;
 }
 
 .home-content a {
@@ -49,41 +50,6 @@
   background-color: #004085;
 }
 
-/* Animasi untuk judul */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Animasi untuk seluruh konten */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Terapkan animasi pada elemen beranda */
-#Beranda h1 {
-  animation: slideDown 1.5s ease-out forwards; /* Durasi 1.5 detik, easing, dan animasi berakhir di posisi akhir */
-}
-
-/* Animasi untuk paragraf atau elemen lainnya */
-#Beranda p {
-  animation: fadeInUp 1.5s ease-out 1.8s forwards; /* Mengurangi durasi untuk membuatnya lebih cepat */
-}
-
-/* Gambar profil */
 .profile-img {
   width: 200px;
   height: auto;
@@ -94,71 +60,26 @@
   margin-right: auto;
 }
 
-/* --- BAGIAN PROFIL, ABOUT, CONTACT, DAN DASHBOARD --- */
-/* Samakan background semua section (kecuali beranda) */
-#Profil,
-.section-about,
-.section-contact,
-.section-dashboard {
-  background-color: #1c1c1c;
-  color: white;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-/* Judul section */
-.section-biodata h2,
-.section-about h2,
-.section-contact h2,
-.section-dashboard h2,
-.section-dashboard h4 {
-  font-weight: 400;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  color: white;
-}
-
-/* Kontak Icons */
-.contact-icons a {
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  border-radius: 30px;
-  color: white; /* Pastikan ikon berwarna putih */
-}
-
-/* Responsif Styling */
-@media (max-width: 991.98px) {
-  .offcanvas-end {
-    width: 250px;
-  }
-}
-
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px; /* tinggi navbar desktop */
-  }
-}
-
-/* Kontainer untuk galeri */
+/* =================== home.css =================== */
 .gallery-container {
-  overflow: hidden; /* Menyembunyikan gambar yang melampaui batas */
-  width: 90%; /* Lebar penuh container */
+  overflow: hidden;
+  width: 90%;
   margin-bottom: 150px;
   position: relative;
 }
 
 .gallery-wrapper {
   display: flex;
-  animation: slide 28s linear infinite; /* Menggeser gambar dalam 32 detik */
+  animation: slide 28s linear infinite;
 }
 
 .gallery-item {
   display: inline-block;
   margin-right: 16px;
-  flex: 0 0 22%; /* Membuat gambar proporsional dan fleksibel */
+  flex: 0 0 22%;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   background-color: #2c2c2c;
 }
 
@@ -168,101 +89,31 @@
   object-fit: cover;
 }
 
-/* Animasi untuk menggeser gambar secara otomatis */
 @keyframes slide {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* Geser gambar hingga setengah dari panjangnya */
+    transform: translateX(-50%);
   }
 }
 
-/* BAGIAN DASHBOARD */
-.section-dashboard {
-  padding-top: 150px; /* sesuaikan dengan tinggi navbar kamu */
-  background-color: #1c1c1c; /* Samakan dengan section lain */
-  color: white;
-  min-height: 100vh;
-}
-
-.dashboard-card {
-  background-color: #2a2a2a; /* Buat card sedikit berbeda tapi masih gelap */
-  color: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.dashboard-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
-}
-
-.dashboard-icon {
-  font-size: 2.5rem;
-  color: #0d6efd;
-}
-
-/* Override tabel agar background dan teks sesuai tema gelap */
-.section-dashboard table {
-  background-color: transparent;
-  color: white;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.section-dashboard .table thead {
-  background-color: #343a40; /* bootstrap dark */
-  color: white;
-}
-
-.section-dashboard .table tbody td {
-  background-color: transparent;
-  color: white;
-  border-bottom: 1px solid #444;
-}
-
-/* Badge warna custom */
-.section-dashboard .badge.bg-success {
-  background-color: #198754 !important;
-}
-
-.section-dashboard .badge.bg-warning {
-  background-color: #ffc107 !important;
-  color: #212529 !important;
-}
-
-.section-dashboard .badge.bg-secondary {
-  background-color: #6c757d !important;
-}
-
-/* Pastikan teks di tbody tabel berwarna putih */
-.table tbody tr td {
-  color: white !important;
-}
-
-/* Pastikan elemen di section-contact dan dashboard tidak punya background putih */
-.section-contact * {
+/* =================== home.css =================== */
+.section-contact *,
+.section-comment * {
   background-color: transparent !important;
   color: white !important;
 }
 
-.section-dashboard * {
-  background-color: transparent !important;
-  color: white !important;
-}
-
-/* Section komentar */
 .section-comment {
   background-color: #1c1c1c;
   color: white;
   padding: 50px 20px;
   max-width: 700px;
-  margin-top: 100px; /* Tambah jarak atas komentar */
+  margin-top: 100px;
   margin: 40px auto;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .section-comment h2 {
@@ -273,7 +124,6 @@
   padding-bottom: 10px;
 }
 
-/* Form Group */
 .section-comment .form-group {
   margin-bottom: 20px;
   display: flex;
@@ -307,10 +157,9 @@
   outline: none;
 }
 
-/* Tombol submit */
 .section-comment button {
-  background-color: #0d6efd;
-  color: white;
+  background-color: #0d6efd !important;
+  color: white !important;
   padding: 12px 25px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -322,25 +171,168 @@
 }
 
 .section-comment button:hover {
-  background-color: #004085;
+  background-color: #004085 !important;
 }
 
-/* Pesan notifikasi */
-#commentMessage {
+#commentMessage.success {
+  background-color: #198754; /* hijau */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
   margin-top: 20px;
   font-size: 1rem;
   font-weight: 500;
-  color: #28a745; /* hijau sukses */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: block; /* pastikan tampil */
 }
 
-/* Responsif kecil */
+#commentMessage.error {
+  background-color: #dc3545; /* merah */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: block; /* pastikan tampil */
+}
+
 @media (max-width: 600px) {
   .section-comment {
     padding: 30px 15px;
   }
 }
 
-/* Tambahan untuk memberi jarak antar section */
+/* =================== home.css =================== */
+.section-dashboard {
+  padding-top: 150px;
+  background-color: #1c1c1c;
+  color: white;
+  min-height: 100vh;
+}
+
+.dashboard-card {
+  background-color: #2a2a2a;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-icon {
+  font-size: 2.5rem;
+  color: #0d6efd;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-icon:hover {
+  transform: scale(1.1);
+  color: #ffc107;
+}
+
+.section-dashboard table {
+  background-color: transparent;
+  color: white;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.section-dashboard .table thead {
+  background-color: #343a40;
+  color: white;
+}
+
+.section-dashboard .table tbody td {
+  background-color: transparent;
+  color: white;
+  border-bottom: 1px solid #444;
+}
+
+.section-dashboard .badge.bg-success {
+  background-color: #198754 !important;
+}
+
+.section-dashboard .badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.section-dashboard .badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+.table tbody tr td {
+  color: white !important;
+}
+
+/* =================== home.css =================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1c1c1c;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section-common {
+  background-color: #1c1c1c;
+}
+
+.contact-icons a,
+.social-icons a {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover,
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+.section-biodata h2,
+.section-about h2,
+.section-contact h2,
+.section-dashboard h2,
+.section-dashboard h4 {
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: white;
+}
+
 #Profil,
 #Dashboard,
 #Beranda,
@@ -350,59 +342,48 @@
 .section-contact,
 .section-dashboard,
 .section-comment {
-  scroll-margin-top: 90px; /* Tambahan jarak saat navigasi scroll */
-  margin-top: 80px;         /* Tambahkan jarak atas antar section */
-  margin-bottom: 80px; 
-  margin-top: -56px; 
-  padding-top: 100px;    
+  scroll-margin-top: 90px;
+  margin-top: -56px;
+  margin-bottom: 80px;
+  padding-top: 100px;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #1c1c1c; 
-  color: white; /* Warna teks default Bootstrap */
+.table-bordered-white td,
+.table-bordered-white th {
+  border: 1px solid white !important;
 }
 
-html {
-  scroll-behavior: smooth; /* Animasi scroll smooth */
+.table-bordered-white thead th {
+  border-bottom: 2px solid white !important;
 }
 
-.section-common {
-  background-color: #1c1c1c; /* Pastikan section umum putih */
+.table-bordered-white {
+  border-color: white !important;
 }
 
-.section-home {
-  background-color: #1c1c1c; /* Jika tidak mau pakai gambar latar */
+.bg-secondary {
+  background-color: #212529 !important;
 }
 
-/* Animasi gallery akan dibuat di CSS eksternal */
-  @keyframes scrollGallery {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  /* Styling link sosial media */
-  .social-icons a {
-    color: inherit;
-    transition: color 0.3s ease;
-  }
+.nav-link {
+  transition: color 0.3s ease;
+  color: white;
+  padding-right: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
 
-  .social-icons a:hover {
-    color: #0d6efd;
-  }
-  /* Styling tabel dengan border putih */
-    .table-bordered-white td,
-  .table-bordered-white th {
-    border: 1px solid white !important;
-  }
+.navbar-nav .nav-item:last-child .nav-link {
+  border-right: none;
+}
 
-  .table-bordered-white thead th {
-    border-bottom: 2px solid white !important;
+@media (max-width: 991.98px) {
+  .offcanvas-end {
+    width: 250px;
   }
+}
 
-  .table-bordered-white {
-    border-color: white !important;
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
   }
+}
